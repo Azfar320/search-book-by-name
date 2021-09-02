@@ -1,12 +1,16 @@
-const searchFood = () => {
+const searchBook = () => {
     const searchField = document.getElementById("search-field");
     const searchText = searchField.value;
     searchField.value = " ";
 
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
     console.log(url);
 
     fetch(url)
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => displaySearchResult(data.docs));
+}
+
+const displaySearchResult = (docs) => {
+    console.log(docs);
 }
